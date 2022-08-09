@@ -1,4 +1,4 @@
-#Helm chart for access-control
+#Helm chart for ci-manager
 
 to update/publish:
 
