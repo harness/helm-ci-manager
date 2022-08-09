@@ -1,0 +1,119 @@
+# Default values for access-control
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+global:
+  loadbalancerURL: "http://test/abc"
+  airgap: "false"
+replicaCount: 1
+maxSurge: 1
+maxUnavailable: 0
+
+image:
+  repository: harness/ci-manager-signed
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "76019"
+
+ci_images:
+  addon:
+    tag: "1.14.7"
+    repository: harness/ci-addon
+
+  lite_engine:
+    tag: "1.14.7"
+    repository: harness/ci-lite-engine
+
+  git_clone:
+    tag: "1.2.0-rootless"
+    repository: harness/drone-git
+
+  kaniko:
+    tag: "1.6.0"
+    repository: plugins/kaniko
+
+  kaniko_ecr:
+    tag: "1.6.0"
+    repository: plugins/kaniko-ecr
+
+  kaniko_gcr:
+    tag: "1.6.0"
+    repository: plugins/kaniko-gcr
+
+  gcs_upload:
+    tag: "1.3.0"
+    repository: plugins/gcs
+
+  s3_upload:
+    tag: "1.1.0"
+    repository: plugins/s3
+
+  artifactory_upload:
+    tag: "1.1.0"
+    repository: plugins/artifactory
+
+  gcs_cache:
+    tag: "1.4.0"
+    repository: plugins/cache
+
+  s3_cache:
+    tag: "1.4.0"
+    repository: plugins/cache
+
+java:
+  memory: 2096
+
+appLogLevel: INFO
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: "harness-default"
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: 
+  runAsUser: 65534
+  runAsNonRoot: true
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 7090
+  grpcport: 9979
+
+resources:
+  limits:
+    cpu: 1
+    memory: 8192Mi
+  requests:
+    cpu: 1
+    memory: 1400Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+

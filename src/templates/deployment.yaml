@@ -1,0 +1,119 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-manager
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "ci-manager.labels" . | nindent 4 }}
+spec:
+  progressDeadlineSeconds: 300
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: {{.Values.maxSurge}}
+      maxUnavailable: {{.Values.maxUnavailable}}
+  selector:
+    matchLabels:
+      {{- include "ci-manager.selectorLabels" . | nindent 6 }} 
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "ci-manager.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}    
+      serviceAccountName: {{ include "ci-manager.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: ci-manager
+          image: {{ include "harnesscommon.names.imagename" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+              {{- toYaml .Values.securityContext | nindent 12 }}
+          ports:
+          - name: http-ci-manager
+            containerPort: {{.Values.service.port}}
+            protocol: "TCP"
+          - name: ci-manager-grpc
+            containerPort: {{.Values.service.grpcport}}
+            protocol: "TCP"
+          resources:
+              {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: harness-secrets
+                  key: mongodbUsername
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harness-secrets
+                  key: mongodbPassword
+            - name : TIMESCALE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harness-secrets
+                  key: timescaledbPostgressPassword
+            - name: TIMESCALEDB_USERNAME
+              value: postgres                  
+            - name: MONGO_URI
+              value: 'mongodb://$(MONGODB_USERNAME):$(MONGODB_PASSWORD)@mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017/harness?&authSource=admin'
+            - name: CIMANAGER_MONGO_URI
+              value: 'mongodb://$(MONGODB_USERNAME):$(MONGODB_PASSWORD)@mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017/harness-ci?&authSource=admin'
+            - name: PMS_MONGO_URI
+              value: 'mongodb://$(MONGODB_USERNAME):$(MONGODB_PASSWORD)@mongodb-replicaset-chart-0.mongodb-replicaset-chart.{{ .Release.Namespace }}.svc:27017/pms-harness?authSource=admin'
+            - name: TIMESCALE_URI
+              value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'         
+          envFrom:
+          - configMapRef:
+              name: ci-manager
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http-ci-manager
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 8
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http-ci-manager
+            initialDelaySeconds: 40
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 20     
+      affinity: 
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - ci-manager
+            topologyKey: "kubernetes.io/hostname"
+      {{- with .Values.affinity }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

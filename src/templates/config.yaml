@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ci-manager
+  namespace: {{ .Release.Namespace }}
+data:
+  CACHE_BACKEND: "REDIS"
+  CACHE_CONFIG_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  CACHE_CONFIG_SENTINEL_MASTER_NAME: "harness-redis"
+  CACHE_CONFIG_USE_SENTINEL: "true"
+  DEPLOY_MODE: KUBERNETES_ONPREM
+  MANAGER_TARGET: harness-manager:9879
+  MANAGER_AUTHORITY: default-authority.harness.io
+  GRPC_SERVER_PORT: {{.Values.service.grpcport | quote}}
+  SCM_SERVICE_URI: "scm:8091"
+  ADDON_IMAGE: '{{ .Values.ci_images.addon.repository }}:{{ .Values.ci_images.addon.tag }}'
+  LE_IMAGE: '{{ .Values.ci_images.lite_engine.repository }}:{{ .Values.ci_images.lite_engine.tag }}'
+  GIT_CLONE_IMAGE: '{{ .Values.ci_images.git_clone.repository }}:{{ .Values.ci_images.git_clone.tag }}'
+  DOCKER_PUSH_IMAGE: '{{ .Values.ci_images.kaniko.repository }}:{{ .Values.ci_images.kaniko.tag }}'
+  ECR_PUSH_IMAGE:  '{{ .Values.ci_images.kaniko_ecr.repository }}:{{ .Values.ci_images.kaniko_ecr.tag }}'
+  GCR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_gcr.repository }}:{{ .Values.ci_images.kaniko_gcr.tag }}'
+  GCS_UPLOAD_IMAGE: '{{ .Values.ci_images.gcs_upload.repository }}:{{ .Values.ci_images.gcs_upload.tag }}'
+  S3_UPLOAD_IMAGE: '{{ .Values.ci_images.s3_upload.repository }}:{{ .Values.ci_images.s3_upload.tag }}'
+  ARTIFACTORY_UPLOAD_IMAGE: '{{ .Values.ci_images.artifactory_upload.repository }}:{{ .Values.ci_images.artifactory_upload.tag }}'
+  GCS_CACHE_IMAGE: '{{ .Values.ci_images.gcs_upload.repository }}:{{ .Values.ci_images.gcs_upload.tag }}'
+  S3_CACHE_IMAGE: '{{ .Values.ci_images.s3_cache.repository }}:{{ .Values.ci_images.s3_cache.tag }}'
+  PMS_TARGET:  pipeline-service:12011
+  PMS_AUTHORITY:  default-authority.harness.io
+  LOGGING_LEVEL: {{ .Values.appLogLevel }}
+  EVENTS_FRAMEWORK_REDIS_URL: 'redis://localhost:6379'
+  EVENTS_FRAMEWORK_USE_SENTINEL: "true"
+  EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
+  EVENTS_FRAMEWORK_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  SHOULD_CONFIGURE_WITH_PMS: "true"
+  ENABLE_DASHBOARD_TIMESCALE: "true"
+  MEMORY: {{ .Values.java.memory | quote }}
+  USE_REDIS_FOR_SDK_RESPONSE_EVENTS: "true"
+ {{- if eq .Values.global.airgap "true" }}
+  DEFAULT_INTERNAL_IMAGE_CONNECTOR: "account.harnessImage"
+ {{- end }}
+  NG_MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/ng/api/'
+  MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/api/'
+  LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
+  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/ti-service/'
+  API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
+  STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
+  SECURITY_IMAGE: harness/sto-plugin:latest
+  STO_SERVICE_GLOBAL_TOKEN: "token"
+  LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
+  TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
