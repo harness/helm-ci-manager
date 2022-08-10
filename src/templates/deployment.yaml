@@ -65,7 +65,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: harness-secrets
-                  key: timescaledbPostgressPassword
+                  key: timescaledbPostgresPassword
             - name: TIMESCALEDB_USERNAME
               value: postgres                  
             - name: MONGO_URI
