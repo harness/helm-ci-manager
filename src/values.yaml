@@ -15,7 +15,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "76019"
 
-securityImage: harness/sto-plugin:latest
+securityImage:
+  repository: harness/sto-plugin
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
 
 ci_images:
   addon:

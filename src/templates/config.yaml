@@ -38,13 +38,13 @@ data:
  {{- if eq .Values.global.airgap "true" }}
   DEFAULT_INTERNAL_IMAGE_CONNECTOR: "account.harnessImage"
  {{- end }}
-  NG_MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/ng/api/'
-  MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/api/'
+  NG_MANAGER_URL: 'http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/api/'
+  MANAGER_URL: 'http://harness-manager.{{ .Release.Namespace }}.svc.cluster.local:9090/api/'
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
-  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/ti-service/'
+  TI_SERVICE_ENDPOINT: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
   STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
-  SECURITY_IMAGE: {{ .Values.securityImage }}
+  SECURITY_IMAGE: {{ .Values.securityImage.repository }}:{{ .Values.securityImage.tag }}
   STO_SERVICE_GLOBAL_TOKEN: "token"
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
