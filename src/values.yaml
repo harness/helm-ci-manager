@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
-  loadbalancerURL: "http://test/abc"
+  loadbalancerURL: ""
   airgap: "false"
   ha: false
 replicaCount: 1
@@ -13,7 +13,7 @@ image:
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "76019"
+  tag: ""
 
 securityImage:
   repository: harness/sto-plugin
@@ -66,7 +66,7 @@ ci_images:
     repository: plugins/cache
 
 java:
-  memory: 2096
+  memory: 4096
 
 appLogLevel: INFO
 
