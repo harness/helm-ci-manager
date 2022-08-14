@@ -4,7 +4,6 @@
 global:
   loadbalancerURL: ""
   airgap: "false"
-  ha: false
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
