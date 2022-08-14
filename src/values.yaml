@@ -12,7 +12,7 @@ image:
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "76019"
 
 securityImage:
   repository: harness/sto-plugin
