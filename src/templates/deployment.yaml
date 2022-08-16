@@ -51,6 +51,11 @@ spec:
           resources:
               {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: STO_SERVICE_GLOBAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: harness-secrets
+                  key: stoAppHarnessToken
             - name: MONGODB_USERNAME
               valueFrom:
                 secretKeyRef:
