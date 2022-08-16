@@ -45,7 +45,7 @@ spec:
           - name: http-ci-manager
             containerPort: {{.Values.service.port}}
             protocol: "TCP"
-          - name: ci-manager-grpc
+          - name: grpc-ci-manager
             containerPort: {{.Values.service.grpcport}}
             protocol: "TCP"
           resources:

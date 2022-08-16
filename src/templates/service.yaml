@@ -12,7 +12,7 @@ spec:
     port: {{.Values.service.port}}
     protocol: TCP
     targetPort: {{.Values.service.port}}
-  - name: ci-manager-grpc
+  - name: grpc-ci-manager
     port: {{.Values.service.grpcport}}
     protocol: TCP
     targetPort: {{.Values.service.grpcport}}     
