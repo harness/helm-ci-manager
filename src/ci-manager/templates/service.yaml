@@ -15,6 +15,6 @@ spec:
   - name: grpc-ci-manager
     port: {{.Values.service.grpcport}}
     protocol: TCP
-    targetPort: {{.Values.service.grpcport}}     
+    targetPort: {{.Values.service.grpcport}}
   selector:
      {{- include "ci-manager.selectorLabels" . | nindent 4 }}

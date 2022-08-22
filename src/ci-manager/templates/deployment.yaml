@@ -17,7 +17,7 @@ spec:
       maxUnavailable: {{.Values.maxUnavailable}}
   selector:
     matchLabels:
-      {{- include "ci-manager.selectorLabels" . | nindent 6 }} 
+      {{- include "ci-manager.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -30,14 +30,14 @@ spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
-      {{- end }}    
+      {{- end }}
       serviceAccountName: {{ include "ci-manager.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
       containers:
         - name: ci-manager
-          image: {{ include "harnesscommon.names.imagename" . }}
+          image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
               {{- toYaml .Values.securityContext | nindent 12 }}
@@ -72,7 +72,7 @@ spec:
                   name: harness-secrets
                   key: timescaledbPostgresPassword
             - name: TIMESCALEDB_USERNAME
-              value: postgres                  
+              value: postgres
             - name: MONGO_URI
               value: {{ include "harnesscommon.database.mongo" (dict "database" "harness" "context" $) }}
             - name: CIMANAGER_MONGO_URI
@@ -80,7 +80,7 @@ spec:
             - name: PMS_MONGO_URI
               value: {{ include "harnesscommon.database.mongo" (dict "database" "pms-harness" "context" $) }}
             - name: TIMESCALE_URI
-              value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'         
+              value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
           envFrom:
           - configMapRef:
               name: ci-manager
@@ -99,8 +99,8 @@ spec:
             initialDelaySeconds: 40
             timeoutSeconds: 5
             periodSeconds: 10
-            failureThreshold: 20     
-      affinity: 
+            failureThreshold: 20
+      affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:

@@ -9,15 +9,19 @@ maxSurge: 1
 maxUnavailable: 0
 
 image:
+  registry: docker.io
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "76019"
+  digest: ""
 
 securityImage:
   image:
+    registry: docker.io
     repository: harness/sto-plugin
     tag: latest
+    digest: ""
 
 ci_images:
   addon:
@@ -86,7 +90,7 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: 
+securityContext:
   runAsUser: 65534
   runAsNonRoot: true
   # capabilities:
@@ -121,4 +125,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
