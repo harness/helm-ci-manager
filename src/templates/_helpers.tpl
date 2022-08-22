@@ -61,3 +61,13 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
+{{/*
+Create the name of the sentinet image to use
+*/}}
+{{- define "ci-manager.securityImage" -}}
+{{- if .Values.global.imageRegistry -}}
+{{- printf "%s/%s:%s" .Values.global.imageRegistry ((splitList "/" .Values.securityImage.image.repository) | last) .Values.securityImage.image.tag -}}
+{{- else -}}
+{{- printf "%s:%s" .Values.securityImage.image.repository .Values.securityImage.image.tag -}}
+{{- end -}}
+{{- end }}
