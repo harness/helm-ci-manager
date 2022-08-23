@@ -10,7 +10,7 @@ data:
   CACHE_CONFIG_USE_SENTINEL: "true"
   DEPLOY_MODE: KUBERNETES_ONPREM
   MANAGER_TARGET: harness-manager:9879
-  MANAGER_AUTHORITY: default-authority.harness.io
+  MANAGER_AUTHORITY: harness-manager:9879
   GRPC_SERVER_PORT: {{.Values.service.grpcport | quote}}
   SCM_SERVICE_URI: "scm:8091"
   ADDON_IMAGE: '{{ .Values.ci_images.addon.repository }}:{{ .Values.ci_images.addon.tag }}'
@@ -25,7 +25,7 @@ data:
   GCS_CACHE_IMAGE: '{{ .Values.ci_images.gcs_upload.repository }}:{{ .Values.ci_images.gcs_upload.tag }}'
   S3_CACHE_IMAGE: '{{ .Values.ci_images.s3_cache.repository }}:{{ .Values.ci_images.s3_cache.tag }}'
   PMS_TARGET:  pipeline-service:12011
-  PMS_AUTHORITY:  default-authority.harness.io
+  PMS_AUTHORITY:  pipeline-service:12011
   LOGGING_LEVEL: {{ .Values.appLogLevel }}
   EVENTS_FRAMEWORK_REDIS_URL: 'redis://localhost:6379'
   EVENTS_FRAMEWORK_USE_SENTINEL: "true"
