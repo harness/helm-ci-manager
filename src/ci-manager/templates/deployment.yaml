@@ -54,23 +54,23 @@ spec:
             - name: STO_SERVICE_GLOBAL_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: harness-secrets
-                  key: stoAppHarnessToken
+                  name: {{ .Values.stoServiceGlobalToken.name }}
+                  key: {{ .Values.stoServiceGlobalToken.key }}
             - name: MONGODB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: harness-secrets
-                  key: mongodbUsername
+                  name: {{ .Values.mongoSecrets.userName.name }}
+                  key: {{ .Values.mongoSecrets.userName.key }}
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: harness-secrets
-                  key: mongodbPassword
+                  name: {{ .Values.mongoSecrets.password.name }}
+                  key: {{ .Values.mongoSecrets.password.key }}
             - name : TIMESCALE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: harness-secrets
-                  key: timescaledbPostgresPassword
+                  name: {{ .Values.timescaleSecret.password.name }}
+                  key: {{ .Values.timescaleSecret.password.key }}
             - name: TIMESCALEDB_USERNAME
               value: postgres
             - name: MONGO_URI
