@@ -23,48 +23,78 @@ securityImage:
     tag: latest
     digest: ""
 
+waitForInitContainer:
+  image:
+    registry: docker.io
+    repository: harness/helm-init-container
+    pullPolicy: IfNotPresent
+    tag: "latest"
+    digest: ""
+
 ci_images:
   addon:
+    registry: docker.io
+    digest: ""
     tag: "1.14.7"
     repository: harness/ci-addon
 
   lite_engine:
+    registry: docker.io
+    digest: ""
     tag: "1.14.7"
     repository: harness/ci-lite-engine
 
   git_clone:
+    registry: docker.io
+    digest: ""
     tag: "1.2.0-rootless"
     repository: harness/drone-git
 
   kaniko:
+    registry: docker.io
+    digest: ""
     tag: "1.6.0"
     repository: plugins/kaniko
 
   kaniko_ecr:
+    registry: docker.io
+    digest: ""
     tag: "1.6.0"
     repository: plugins/kaniko-ecr
 
   kaniko_gcr:
+    registry: docker.io
+    digest: ""
     tag: "1.6.0"
     repository: plugins/kaniko-gcr
 
   gcs_upload:
+    registry: docker.io
+    digest: ""
     tag: "1.3.0"
     repository: plugins/gcs
 
   s3_upload:
+    registry: docker.io
+    digest: ""
     tag: "1.1.0"
     repository: plugins/s3
 
   artifactory_upload:
+    registry: docker.io
+    digest: ""
     tag: "1.1.0"
     repository: plugins/artifactory
 
   gcs_cache:
+    registry: docker.io
+    digest: ""
     tag: "1.4.0"
     repository: plugins/cache
 
   s3_cache:
+    registry: docker.io
+    digest: ""
     tag: "1.4.0"
     repository: plugins/cache
 
