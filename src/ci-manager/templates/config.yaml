@@ -35,7 +35,7 @@ data:
   ENABLE_DASHBOARD_TIMESCALE: "true"
   MEMORY: {{ .Values.java.memory | quote }}
   USE_REDIS_FOR_SDK_RESPONSE_EVENTS: "true"
- {{- if eq .Values.global.airgap "true" }}
+ {{- if .Values.global.airgap }}
   DEFAULT_INTERNAL_IMAGE_CONNECTOR: "account.harnessImage"
  {{- end }}
   NG_MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/ng/api/'
