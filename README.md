@@ -1,1 +1,1 @@
-#Helm chart for ci-manager
+src/ci-manager/README.md
