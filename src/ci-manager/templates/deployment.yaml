@@ -95,18 +95,23 @@ spec:
             httpGet:
               path: /health
               port: http-ci-manager
-            initialDelaySeconds: 60
-            timeoutSeconds: 5
+            timeoutSeconds: 2
             periodSeconds: 5
-            failureThreshold: 8
+            failureThreshold: 5
           livenessProbe:
             httpGet:
               path: /health
               port: http-ci-manager
-            initialDelaySeconds: 40
-            timeoutSeconds: 5
+            timeoutSeconds: 2
             periodSeconds: 10
-            failureThreshold: 20
+            failureThreshold: 5
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http-ci-manager
+            timeoutSeconds: 2
+            periodSeconds: 10
+            failureThreshold: 25
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
