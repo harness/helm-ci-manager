@@ -41,7 +41,7 @@ data:
   NG_MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/ng/api/'
   MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/api/'
   {{- if .Values.global.ingress.useSelfSignedCert }}
-  LOG_SERVICE_ENDPOINT: http://log-service.{{ .Release.Namespace }}.svc.cluster.local:8079
+  LOG_SERVICE_ENDPOINT: 'http://log-service.{{ .Release.Namespace }}.svc.cluster.local:8079/'
   {{- else }}
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
   {{- end }}
