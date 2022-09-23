@@ -42,10 +42,11 @@ data:
   MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/api/'
   {{- if .Values.global.ingress.useSelfSignedCert }}
   LOG_SERVICE_ENDPOINT: 'http://log-service.{{ .Release.Namespace }}.svc.cluster.local:8079/'
+  TI_SERVICE_ENDPOINT: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
   {{- else }}
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
-  {{- end }}
   TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/ti-service/'
+  {{- end }}
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
   STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
   SECURITY_IMAGE: {{ include "ci-manager.securityImage" . }}
