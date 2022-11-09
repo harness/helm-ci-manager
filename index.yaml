@@ -3,6 +3,20 @@ entries:
   ci-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-11-09T10:49:48.080695416Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: dbe995f284abb8f425f47eabfb9fbb9fadedd0afbeeb1a7a58480cccbcd75678
+    name: ci-manager
+    type: application
+    urls:
+    - https://github.com/harness/helm-ci-manager/releases/download/ci-manager-0.2.13/ci-manager-0.2.13.tgz
+    version: 0.2.13
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-09-23T04:12:29.74547533Z"
     dependencies:
     - name: harness-common
@@ -179,4 +193,4 @@ entries:
     urls:
     - https://github.com/harness/helm-ci-manager/releases/download/ci-manager-0.2.0/ci-manager-0.2.0.tgz
     version: 0.2.0
-generated: "2022-09-23T04:12:29.745699132Z"
+generated: "2022-11-09T10:49:48.080753816Z"
