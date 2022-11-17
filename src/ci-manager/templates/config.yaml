@@ -52,7 +52,7 @@ data:
   TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
   {{- end }}
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
-  STO_SERVICE_ENDPOINT: 'http://sto-core.{{ .Release.Namespace }}.svc.cluster.local:4000/'
+  STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
   SECURITY_IMAGE: {{ include "ci-manager.securityImage" . }}
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
