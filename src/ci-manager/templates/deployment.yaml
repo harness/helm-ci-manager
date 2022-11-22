@@ -91,22 +91,7 @@ spec:
           envFrom:
           - configMapRef:
               name: ci-manager
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: http-ci-manager
-            initialDelaySeconds: 60
-            timeoutSeconds: 5
-            periodSeconds: 5
-            failureThreshold: 8
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: http-ci-manager
-            initialDelaySeconds: 40
-            timeoutSeconds: 5
-            periodSeconds: 10
-            failureThreshold: 20
+          {{- toYaml .Values.probes | nindent 10}}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
