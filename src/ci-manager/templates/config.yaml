@@ -39,7 +39,7 @@ data:
   DEFAULT_INTERNAL_IMAGE_CONNECTOR: "account.harnessImage"
  {{- end }}
   NG_MANAGER_URL: 'http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/'
-  MANAGER_URL: '{{ .Values.global.loadbalancerURL }}/api/'
+  MANAGER_URL: 'http://harness-manager:9090/api/'
   {{- if .Values.global.ingress.useSelfSignedCert }}
   LOG_SERVICE_ENDPOINT: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
   TI_SERVICE_ENDPOINT: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
