@@ -37,37 +37,37 @@ ci_images:
   addon:
     registry: docker.io
     digest: ""
-    tag: "1.14.7"
+    tag: "1.14.21"
     repository: harness/ci-addon
 
   lite_engine:
     registry: docker.io
     digest: ""
-    tag: "1.14.7"
+    tag: "1.14.21"
     repository: harness/ci-lite-engine
 
   git_clone:
     registry: docker.io
     digest: ""
-    tag: "1.2.0-rootless"
+    tag: "1.2.4-rootless"
     repository: harness/drone-git
 
   kaniko:
     registry: docker.io
     digest: ""
-    tag: "1.6.0"
+    tag: "1.6.6"
     repository: plugins/kaniko
 
   kaniko_ecr:
     registry: docker.io
     digest: ""
-    tag: "1.6.0"
+    tag: "1.6.6"
     repository: plugins/kaniko-ecr
 
   kaniko_gcr:
     registry: docker.io
     digest: ""
-    tag: "1.6.0"
+    tag: "1.6.6"
     repository: plugins/kaniko-gcr
 
   gcs_upload:
@@ -91,13 +91,13 @@ ci_images:
   gcs_cache:
     registry: docker.io
     digest: ""
-    tag: "1.4.0"
+    tag: "1.4.2"
     repository: plugins/cache
 
   s3_cache:
     registry: docker.io
     digest: ""
-    tag: "1.4.0"
+    tag: "1.4.2"
     repository: plugins/cache
 
 stoServiceGlobalToken:
