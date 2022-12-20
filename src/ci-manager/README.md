@@ -1,6 +1,6 @@
 # ci-manager
 
-![Version: 0.2.18](https://img.shields.io/badge/Version-0.2.18-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.2.19](https://img.shields.io/badge/Version-0.2.19-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -23,7 +23,7 @@ A Helm chart for Kubernetes
 | ci_images.addon.digest | string | `""` |  |
 | ci_images.addon.registry | string | `"docker.io"` |  |
 | ci_images.addon.repository | string | `"harness/ci-addon"` |  |
-| ci_images.addon.tag | string | `"1.14.7"` |  |
+| ci_images.addon.tag | string | `"1.14.21"` |  |
 | ci_images.artifactory_upload.digest | string | `""` |  |
 | ci_images.artifactory_upload.registry | string | `"docker.io"` |  |
 | ci_images.artifactory_upload.repository | string | `"plugins/artifactory"` |  |
@@ -31,7 +31,7 @@ A Helm chart for Kubernetes
 | ci_images.gcs_cache.digest | string | `""` |  |
 | ci_images.gcs_cache.registry | string | `"docker.io"` |  |
 | ci_images.gcs_cache.repository | string | `"plugins/cache"` |  |
-| ci_images.gcs_cache.tag | string | `"1.4.0"` |  |
+| ci_images.gcs_cache.tag | string | `"1.4.2"` |  |
 | ci_images.gcs_upload.digest | string | `""` |  |
 | ci_images.gcs_upload.registry | string | `"docker.io"` |  |
 | ci_images.gcs_upload.repository | string | `"plugins/gcs"` |  |
@@ -39,27 +39,27 @@ A Helm chart for Kubernetes
 | ci_images.git_clone.digest | string | `""` |  |
 | ci_images.git_clone.registry | string | `"docker.io"` |  |
 | ci_images.git_clone.repository | string | `"harness/drone-git"` |  |
-| ci_images.git_clone.tag | string | `"1.2.0-rootless"` |  |
+| ci_images.git_clone.tag | string | `"1.2.4-rootless"` |  |
 | ci_images.kaniko.digest | string | `""` |  |
 | ci_images.kaniko.registry | string | `"docker.io"` |  |
 | ci_images.kaniko.repository | string | `"plugins/kaniko"` |  |
-| ci_images.kaniko.tag | string | `"1.6.0"` |  |
+| ci_images.kaniko.tag | string | `"1.6.6"` |  |
 | ci_images.kaniko_ecr.digest | string | `""` |  |
 | ci_images.kaniko_ecr.registry | string | `"docker.io"` |  |
 | ci_images.kaniko_ecr.repository | string | `"plugins/kaniko-ecr"` |  |
-| ci_images.kaniko_ecr.tag | string | `"1.6.0"` |  |
+| ci_images.kaniko_ecr.tag | string | `"1.6.6"` |  |
 | ci_images.kaniko_gcr.digest | string | `""` |  |
 | ci_images.kaniko_gcr.registry | string | `"docker.io"` |  |
 | ci_images.kaniko_gcr.repository | string | `"plugins/kaniko-gcr"` |  |
-| ci_images.kaniko_gcr.tag | string | `"1.6.0"` |  |
+| ci_images.kaniko_gcr.tag | string | `"1.6.6"` |  |
 | ci_images.lite_engine.digest | string | `""` |  |
 | ci_images.lite_engine.registry | string | `"docker.io"` |  |
 | ci_images.lite_engine.repository | string | `"harness/ci-lite-engine"` |  |
-| ci_images.lite_engine.tag | string | `"1.14.7"` |  |
+| ci_images.lite_engine.tag | string | `"1.14.21"` |  |
 | ci_images.s3_cache.digest | string | `""` |  |
 | ci_images.s3_cache.registry | string | `"docker.io"` |  |
 | ci_images.s3_cache.repository | string | `"plugins/cache"` |  |
-| ci_images.s3_cache.tag | string | `"1.4.0"` |  |
+| ci_images.s3_cache.tag | string | `"1.4.2"` |  |
 | ci_images.s3_upload.digest | string | `""` |  |
 | ci_images.s3_upload.registry | string | `"docker.io"` |  |
 | ci_images.s3_upload.repository | string | `"plugins/s3"` |  |
