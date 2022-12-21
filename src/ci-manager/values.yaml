@@ -85,7 +85,7 @@ ci_images:
   artifactory_upload:
     registry: docker.io
     digest: ""
-    tag: "1.1.0"
+    tag: "1.2.0"
     repository: plugins/artifactory
 
   gcs_cache:
