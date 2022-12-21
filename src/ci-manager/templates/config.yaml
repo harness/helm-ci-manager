@@ -56,4 +56,3 @@ data:
   SECURITY_IMAGE: {{ include "ci-manager.securityImage" . }}
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
-  TIMESCALEDB_SSL_MODE: 'disable'
