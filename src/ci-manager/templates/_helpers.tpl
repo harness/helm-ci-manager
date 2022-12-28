@@ -67,3 +67,7 @@ Create the name of the sentinet image to use
 {{- define "ci-manager.securityImage" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.securityImage.image "global" .Values.global) }}
 {{- end }}
+
+{{- define "ci-manager.pullSecrets" -}}
+{{ include "common.images.pullSecrets" (dict "images" (list .Values.image .Values.waitForInitContainer.image .Values.securityImage.image .Values.ci_images.addon.image .Values.ci_images.lite_engine.image .Values.ci_images.git_clone.image .Values.ci_images.kaniko.image .Values.ci_images.kaniko_ecr.image .Values.ci_images.kaniko_gcr.image .Values.ci_images.gcs_upload.image .Values.ci_images.s3_upload.image .Values.ci_images.artifactory_upload.image .Values.ci_images.gcs_cache.image .Values.ci_images.s3_cache.image) "global" .Values.global ) }}
+{{- end -}}
