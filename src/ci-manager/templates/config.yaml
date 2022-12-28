@@ -13,17 +13,17 @@ data:
   MANAGER_AUTHORITY: harness-manager:9879
   GRPC_SERVER_PORT: {{.Values.service.grpcport | quote}}
   SCM_SERVICE_URI: "scm-service:8091"
-  ADDON_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.addon "global" .Values.global) }}
-  LE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.lite_engine "global" .Values.global) }}
-  GIT_CLONE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.git_clone "global" .Values.global) }}
-  DOCKER_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko "global" .Values.global) }}
-  ECR_PUSH_IMAGE:  {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_ecr "global" .Values.global) }}
-  GCR_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_gcr "global" .Values.global) }}
-  GCS_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_upload "global" .Values.global) }}
-  S3_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_upload "global" .Values.global) }}
-  ARTIFACTORY_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.artifactory_upload "global" .Values.global) }}
-  GCS_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_cache "global" .Values.global) }}
-  S3_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_cache "global" .Values.global) }}
+  ADDON_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.addon.image "global" .Values.global) }}
+  LE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.lite_engine.image "global" .Values.global) }}
+  GIT_CLONE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.git_clone.image "global" .Values.global) }}
+  DOCKER_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko.image "global" .Values.global) }}
+  ECR_PUSH_IMAGE:  {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_ecr.image "global" .Values.global) }}
+  GCR_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_gcr.image "global" .Values.global) }}
+  GCS_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_upload.image "global" .Values.global) }}
+  S3_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_upload.image "global" .Values.global) }}
+  ARTIFACTORY_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.artifactory_upload.image "global" .Values.global) }}
+  GCS_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_cache.image "global" .Values.global) }}
+  S3_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_cache.image "global" .Values.global) }}
   PMS_TARGET:  pipeline-service:12011
   PMS_AUTHORITY:  pipeline-service:12011
   LOGGING_LEVEL: {{ .Values.appLogLevel }}
