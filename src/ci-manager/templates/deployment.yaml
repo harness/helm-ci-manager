@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "ci-manager.labels" . | nindent 4 }}
 spec:
-  progressDeadlineSeconds: 300
+  progressDeadlineSeconds: 600
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
