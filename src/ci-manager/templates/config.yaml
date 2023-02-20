@@ -24,7 +24,7 @@ data:
   ARTIFACTORY_UPLOAD_IMAGE: '{{ .Values.ci_images.artifactory_upload.image.repository }}:{{ .Values.ci_images.artifactory_upload.image.tag }}'
   GCS_CACHE_IMAGE: '{{ .Values.ci_images.gcs_cache.image.repository }}:{{ .Values.ci_images.gcs_cache.image.tag }}'
   S3_CACHE_IMAGE: '{{ .Values.ci_images.s3_cache.image.repository }}:{{ .Values.ci_images.s3_cache.image.tag }}'
-  SECURITY_IMAGE: {{ include "ci-manager.securityImage" . }}
+  SECURITY_IMAGE: '{{ .Values.securityImage.image.repository }}:{{ .Values.securityImage.image.tag }}'
   PMS_TARGET:  pipeline-service:12011
   PMS_AUTHORITY:  pipeline-service:12011
   LOGGING_LEVEL: {{ .Values.appLogLevel }}
