@@ -78,7 +78,6 @@ A Helm chart for Kubernetes
 | fullnameOverride | string | `""` |  |
 | global.airgap | bool | `false` |  |
 | global.imagePullSecrets | list | `[]` |  |
-| global.ingress.useSelfSignedCert | bool | `false` |  |
 | global.loadbalancerURL | string | `""` |  |
 | image.digest | string | `""` |  |
 | image.imagePullSecrets | list | `[]` |  |

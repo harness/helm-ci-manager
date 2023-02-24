@@ -4,8 +4,6 @@
 global:
   loadbalancerURL: ""
   airgap: false
-  ingress:
-    useSelfSignedCert: false
   imagePullSecrets: []
 replicaCount: 1
 maxSurge: 1
