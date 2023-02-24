@@ -42,7 +42,7 @@ data:
   NG_MANAGER_URL: 'http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/'
   MANAGER_URL: 'http://harness-manager:9090/api/'
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
-  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gatti-service/'
+  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/ti-service/'
   LOG_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
   TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
