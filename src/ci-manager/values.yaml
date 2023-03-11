@@ -83,6 +83,14 @@ ci_images:
       tag: "1.7.0"
       repository: plugins/kaniko-gcr
       imagePullSecrets: []
+      
+  kaniko_acr:
+    image:
+      registry: docker.io
+      digest: ""
+      tag: "1.7.1"
+      repository: plugins/kaniko-acr
+      imagePullSecrets: []
 
   gcs_upload:
     image:
