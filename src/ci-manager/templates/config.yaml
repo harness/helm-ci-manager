@@ -41,17 +41,10 @@ data:
  {{- end }}
   NG_MANAGER_URL: 'http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/'
   MANAGER_URL: 'http://harness-manager:9090/api/'
-  {{- if .Values.global.ingress.useSelfSignedCert }}
-  LOG_SERVICE_ENDPOINT: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_ENDPOINT: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  LOG_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  {{- else }}
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
-  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/ti-service/'
+  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/ti-service/'
   LOG_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  {{- end }}
+  TI_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/ti-service/'
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
   STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
