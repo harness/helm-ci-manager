@@ -13,17 +13,19 @@ data:
   MANAGER_AUTHORITY: harness-manager:9879
   GRPC_SERVER_PORT: {{.Values.service.grpcport | quote}}
   SCM_SERVICE_URI: "scm-service:8091"
-  ADDON_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.addon.image "global" .Values.global) }}
-  LE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.lite_engine.image "global" .Values.global) }}
-  GIT_CLONE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.git_clone.image "global" .Values.global) }}
-  DOCKER_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko.image "global" .Values.global) }}
-  ECR_PUSH_IMAGE:  {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_ecr.image "global" .Values.global) }}
-  GCR_PUSH_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.kaniko_gcr.image "global" .Values.global) }}
-  GCS_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_upload.image "global" .Values.global) }}
-  S3_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_upload.image "global" .Values.global) }}
-  ARTIFACTORY_UPLOAD_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.artifactory_upload.image "global" .Values.global) }}
-  GCS_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.gcs_cache.image "global" .Values.global) }}
-  S3_CACHE_IMAGE: {{ include "common.images.image" (dict "imageRoot" .Values.ci_images.s3_cache.image "global" .Values.global) }}
+  ADDON_IMAGE: '{{ .Values.ci_images.addon.image.repository }}:{{ .Values.ci_images.addon.image.tag }}'
+  LE_IMAGE: '{{ .Values.ci_images.lite_engine.image.repository }}:{{ .Values.ci_images.lite_engine.image.tag }}'
+  GIT_CLONE_IMAGE: '{{ .Values.ci_images.git_clone.image.repository }}:{{ .Values.ci_images.git_clone.image.tag }}'
+  DOCKER_PUSH_IMAGE: '{{ .Values.ci_images.kaniko.image.repository }}:{{ .Values.ci_images.kaniko.image.tag }}'
+  ECR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_ecr.image.repository }}:{{ .Values.ci_images.kaniko_ecr.image.tag }}'
+  GCR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_gcr.image.repository }}:{{ .Values.ci_images.kaniko_gcr.image.tag }}'
+  ACR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_acr.image.repository }}:{{ .Values.ci_images.kaniko_acr.image.tag }}'  
+  GCS_UPLOAD_IMAGE: '{{ .Values.ci_images.gcs_upload.image.repository }}:{{ .Values.ci_images.gcs_upload.image.tag }}'
+  S3_UPLOAD_IMAGE: '{{ .Values.ci_images.s3_upload.image.repository }}:{{ .Values.ci_images.s3_upload.image.tag }}'
+  ARTIFACTORY_UPLOAD_IMAGE: '{{ .Values.ci_images.artifactory_upload.image.repository }}:{{ .Values.ci_images.artifactory_upload.image.tag }}'
+  GCS_CACHE_IMAGE: '{{ .Values.ci_images.gcs_cache.image.repository }}:{{ .Values.ci_images.gcs_cache.image.tag }}'
+  S3_CACHE_IMAGE: '{{ .Values.ci_images.s3_cache.image.repository }}:{{ .Values.ci_images.s3_cache.image.tag }}'
+  SECURITY_IMAGE: '{{ .Values.securityImage.image.repository }}:{{ .Values.securityImage.image.tag }}'
   PMS_TARGET:  pipeline-service:12011
   PMS_AUTHORITY:  pipeline-service:12011
   LOGGING_LEVEL: {{ .Values.appLogLevel }}
@@ -40,19 +42,11 @@ data:
  {{- end }}
   NG_MANAGER_URL: 'http://ng-manager.{{ .Release.Namespace }}.svc.cluster.local:7090/'
   MANAGER_URL: 'http://harness-manager:9090/api/'
-  {{- if .Values.global.ingress.useSelfSignedCert }}
-  LOG_SERVICE_ENDPOINT: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_ENDPOINT: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  LOG_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  {{- else }}
   LOG_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/log-service/'
-  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/ti-service/'
+  TI_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/gateway/ti-service/'
   LOG_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/log-service/'
-  TI_SERVICE_INTERNAL_URL: 'http://ti-service.{{ .Release.Namespace }}.svc.cluster.local:8078/'
-  {{- end }}
+  TI_SERVICE_INTERNAL_URL: 'http://gateway.{{ .Release.Namespace }}.svc.cluster.local/ti-service/'
   API_URL: '{{ .Values.global.loadbalancerURL }}/ng/#/'
   STO_SERVICE_ENDPOINT: '{{ .Values.global.loadbalancerURL }}/sto/'
-  SECURITY_IMAGE: {{ include "ci-manager.securityImage" . }}
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
