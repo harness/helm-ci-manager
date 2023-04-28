@@ -15,7 +15,7 @@ image:
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3301"
+  tag: "3304"
   digest: ""
   imagePullSecrets: []
 
@@ -41,7 +41,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.4"
+      tag: "1.16.6-linux-amd64"
       repository: harness/ci-addon
       imagePullSecrets: []
 
@@ -49,7 +49,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.4"
+      tag: "1.16.6-linux-amd64"
       repository: harness/ci-lite-engine
       imagePullSecrets: []
 
@@ -57,7 +57,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.2.7-rootless"
+      tag: "1.2.8-rootless"
       repository: harness/drone-git
       imagePullSecrets: []
 
@@ -65,7 +65,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.7.0"
+      tag: "1.7.1"
       repository: plugins/kaniko
       imagePullSecrets: []
 
@@ -73,7 +73,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.7.0"
+      tag: "1.7.1"
       repository: plugins/kaniko-ecr
       imagePullSecrets: []
 
@@ -81,7 +81,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.7.0"
+      tag: "1.7.1"
       repository: plugins/kaniko-gcr
       imagePullSecrets: []
 
@@ -121,7 +121,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.4.6"
+      tag: "1.4.7"
       repository: plugins/cache
       imagePullSecrets: []
 
@@ -129,7 +129,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.4.6"
+      tag: "1.4.7"
       repository: plugins/cache
       imagePullSecrets: []
 
