@@ -6,6 +6,42 @@ global:
   airgap: false
   imagePullSecrets: []
   stackDriverLoggingEnabled: false
+  database:
+    postgres:
+      ## - installed = true if installed within cluster
+      installed: true
+      ## - protocol to use for connection
+      protocol: postgres
+      ## - host array for external
+      hosts:
+        - postgres:5432
+      ## - secret name containing external values
+      secretName: ""
+      ## - key within secret containing username
+      userKey: ""
+      ## - key within secret containing password
+      passwordKey: ""
+      ## - extra arguments set to connection string
+      extraArgs: ""
+    mongo:
+      installed: true
+      protocol: mongodb
+      # --  provide default values if mongo.installed is set to false
+      hosts: []
+      secretName: ""
+      userKey: ""
+      passwordKey: ""
+      extraArgs: ""
+    timescaledb:
+      installed: true
+      protocol: "jdbc:postgresql"
+      # --  provide default values if mongo.installed is set to false
+      hosts:
+        - timescaledb-single-chart:5432
+      secretName: ""
+      userKey: ""
+      passwordKey: ""
+      extraArgs: ""
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
