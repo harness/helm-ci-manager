@@ -34,12 +34,14 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: 30
       initContainers:
+      {{- if .Values.global.database.mongo.installed }}
       - name: wait-for-harness-manager
         image: {{ include "common.images.image" (dict "imageRoot" .Values.waitForInitContainer.image "global" .Values.global) }}
         imagePullPolicy: IfNotPresent
         args:
           - "pod"
           - "-lapp=harness-manager"
+      {{- end }}
       containers:
         - name: ci-manager
           image: {{ include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) }}
@@ -56,21 +58,12 @@ spec:
           resources:
               {{- toYaml .Values.resources | nindent 12 }}
           env:
+            {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
             - name: STO_SERVICE_GLOBAL_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.stoServiceGlobalToken.name }}
                   key: {{ .Values.stoServiceGlobalToken.key }}
-            - name: MONGODB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.userName.name }}
-                  key: {{ .Values.mongoSecrets.userName.key }}
-            - name: MONGODB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mongoSecrets.password.name }}
-                  key: {{ .Values.mongoSecrets.password.key }}
             - name : TIMESCALE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -79,11 +72,11 @@ spec:
             - name: TIMESCALEDB_USERNAME
               value: postgres
             - name: MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "harness" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
             - name: CIMANAGER_MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "harness-ci" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness-ci" "context" $) }}
             - name: PMS_MONGO_URI
-              value: {{ include "harnesscommon.database.mongo" (dict "database" "pms-harness" "context" $) }}
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
             - name: TIMESCALE_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
           envFrom:
