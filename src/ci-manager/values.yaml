@@ -9,16 +9,14 @@ global:
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
-
 image:
   registry: docker.io
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3304"
+  tag: "1"
   digest: ""
   imagePullSecrets: []
-
 securityImage:
   image:
     registry: docker.io
@@ -26,7 +24,6 @@ securityImage:
     tag: latest
     digest: ""
     imagePullSecrets: []
-
 waitForInitContainer:
   image:
     registry: docker.io
@@ -35,7 +32,6 @@ waitForInitContainer:
     tag: "latest"
     digest: ""
     imagePullSecrets: []
-
 ci_images:
   addon:
     image:
@@ -44,7 +40,6 @@ ci_images:
       tag: "1.16.6-linux-amd64"
       repository: harness/ci-addon
       imagePullSecrets: []
-
   lite_engine:
     image:
       registry: docker.io
@@ -52,7 +47,6 @@ ci_images:
       tag: "1.16.6-linux-amd64"
       repository: harness/ci-lite-engine
       imagePullSecrets: []
-
   git_clone:
     image:
       registry: docker.io
@@ -60,7 +54,6 @@ ci_images:
       tag: "1.2.8-rootless"
       repository: harness/drone-git
       imagePullSecrets: []
-
   kaniko:
     image:
       registry: docker.io
@@ -68,7 +61,6 @@ ci_images:
       tag: "1.7.1"
       repository: plugins/kaniko
       imagePullSecrets: []
-
   kaniko_ecr:
     image:
       registry: docker.io
@@ -76,7 +68,6 @@ ci_images:
       tag: "1.7.1"
       repository: plugins/kaniko-ecr
       imagePullSecrets: []
-
   kaniko_gcr:
     image:
       registry: docker.io
@@ -84,7 +75,6 @@ ci_images:
       tag: "1.7.1"
       repository: plugins/kaniko-gcr
       imagePullSecrets: []
-
   kaniko_acr:
     image:
       registry: docker.io
@@ -92,7 +82,6 @@ ci_images:
       tag: "1.7.1"
       repository: plugins/kaniko-acr
       imagePullSecrets: []
-
   gcs_upload:
     image:
       registry: docker.io
@@ -100,7 +89,6 @@ ci_images:
       tag: "1.3.0"
       repository: plugins/gcs
       imagePullSecrets: []
-
   s3_upload:
     image:
       registry: docker.io
@@ -108,7 +96,6 @@ ci_images:
       tag: "1.2.0"
       repository: plugins/s3
       imagePullSecrets: []
-
   artifactory_upload:
     image:
       registry: docker.io
@@ -116,7 +103,6 @@ ci_images:
       tag: "1.2.0"
       repository: plugins/artifactory
       imagePullSecrets: []
-
   gcs_cache:
     image:
       registry: docker.io
@@ -124,7 +110,6 @@ ci_images:
       tag: "1.4.7"
       repository: plugins/cache
       imagePullSecrets: []
-
   s3_cache:
     image:
       registry: docker.io
@@ -132,11 +117,9 @@ ci_images:
       tag: "1.4.7"
       repository: plugins/cache
       imagePullSecrets: []
-
 stoServiceGlobalToken:
   name: harness-secrets
   key: stoAppHarnessToken
-
 mongoSecrets:
   userName:
     name: harness-secrets
@@ -144,20 +127,15 @@ mongoSecrets:
   password:
     name: mongodb-replicaset-chart
     key: mongodb-root-password
-
 timescaleSecret:
   password:
     name: harness-secrets
     key: timescaledbPostgresPassword
-
 java:
   memory: 4096
-
 appLogLevel: INFO
-
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -166,11 +144,9 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "harness-default"
-
 podAnnotations: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext:
   runAsUser: 65534
@@ -181,12 +157,10 @@ securityContext:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
 service:
   type: ClusterIP
   port: 7090
   grpcport: 9979
-
 resources:
   limits:
     cpu: 1
@@ -194,18 +168,13 @@ resources:
   requests:
     cpu: 1
     memory: 1400Mi
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-
 additionalConfigs: {}

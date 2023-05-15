@@ -91,7 +91,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/ci-manager-signed"` |  |
-| image.tag | string | `"3304"` |  |
+| image.tag | string | `"1"` |  |
 | java.memory | int | `4096` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
