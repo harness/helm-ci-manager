@@ -51,6 +51,29 @@ data:
   LOG_SERVICE_GLOBAL_TOKEN: c76e567a-b341-404d-a8dd-d9738714eb82
   TI_SERVICE_GLOBAL_TOKEN: 78d16b66-4b4c-11eb-8377-acde48001122
   STACK_DRIVER_LOGGING_ENABLED: {{ .Values.global.stackDriverLoggingEnabled | quote }}
+
+  # The following image variables are just for the reference and do not impact any functionality
+  AWS_ECR_IMAGE: harness/aws-ecr-job-runner:latest
+  AWS_SECURITY_HUB_IMAGE: harness/aws-security-hub-job-runner:latest
+  AQUA_TRIVY_IMAGE: harness/aqua-trivy-job-runner:latest
+  BANDIT_IMAGE: harness/bandit-job-runner:latest
+  BLACKDUCK_IMAGE: harness/blackduckhub-job-runner:latest
+  BRAKEMAN_IMAGE: harness/brakeman-job-runner:latest
+  STO_IMAGE: harness/sto-plugin:latest
+  FOSSA_IMAGE: harness/fossa-job-runner:latest
+  GRYPE_IMAGE: harness/grype-job-runner:latest
+  NMAP_IMAGE: harness/nmap-job-runner:latest
+  NIKTO_IMAGE: harness/nikto-job-runner:latest
+  OWASP_IMAGE: harness/owasp-dependency-check-job-runner:latest
+  SYNK_IMAGE: harness/snyk-job-runner:latest
+  SONARQUBE_IMAGE: harness/sonarqube-agent-job-runner:latest
+  PROWLER _IMAGE: harness/prowler-job-runner:latest
+  TWISTLOCK_IMAGE: harness/twistlock-job-runner:latest
+  CHECKMARX_IMAGE: harness/checkmarx-job-runner:latest
+  VERACODE_IMAGE: harness/veracode-agent-job-runner:latest
+  ZAP_IMAGE: harness/zap-job-runner:latest
+  WHITE_SOURCE_IMAGE: harness/whitesource-agent-job-runner:latest
+
 {{- if .Values.additionalConfigs }}
   {{- toYaml .Values.additionalConfigs | nindent 2 }}
 {{- end }}
