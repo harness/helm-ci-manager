@@ -67,7 +67,7 @@ data:
   OWASP_IMAGE: harness/owasp-dependency-check-job-runner:latest
   SYNK_IMAGE: harness/snyk-job-runner:latest
   SONARQUBE_IMAGE: harness/sonarqube-agent-job-runner:latest
-  PROWLER _IMAGE: harness/prowler-job-runner:latest
+  PROWLER_IMAGE: harness/prowler-job-runner:latest
   TWISTLOCK_IMAGE: harness/twistlock-job-runner:latest
   CHECKMARX_IMAGE: harness/checkmarx-job-runner:latest
   VERACODE_IMAGE: harness/veracode-agent-job-runner:latest
