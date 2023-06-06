@@ -210,7 +210,6 @@ service:
   grpcport: 9979
 resources:
   limits:
-    cpu: 1
     memory: 8192Mi
   requests:
     cpu: 1
