@@ -64,6 +64,13 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.stoServiceGlobalToken.name }}
                   key: {{ .Values.stoServiceGlobalToken.key }}
+            - name: MONGO_URI
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
+            - name: CIMANAGER_MONGO_URI
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness-ci" "context" $) }}
+            - name: PMS_MONGO_URI
+              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
+            {{- if .Values.global.database.timescaledb.installed }}
             - name : TIMESCALE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -71,14 +78,21 @@ spec:
                   key: {{ .Values.timescaleSecret.password.key }}
             - name: TIMESCALEDB_USERNAME
               value: postgres
-            - name: MONGO_URI
-              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
-            - name: CIMANAGER_MONGO_URI
-              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness-ci" "context" $) }}
-            - name: PMS_MONGO_URI
-              value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
             - name: TIMESCALE_URI
               value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+            {{- else }}
+            {{ include "harnesscommon.dbconnection.dbenvuser" (dict "type" "timescale" "variableName" "TIMESCALEDB_USERNAME" "secret" .Values.global.database.timescaledb.secretName "userKey" .Values.global.database.timescaledb.userKey ) | nindent 12 }}
+            {{ include "harnesscommon.dbconnection.dbenvpassword" (dict "type" "timescale" "variableName" "TIMESCALE_PASSWORD" "secret" .Values.global.database.timescaledb.secretName "passwordKey" .Values.global.database.timescaledb.passwordKey ) | nindent 12 }}
+            - name: TIMESCALE_URI
+              value: 'jdbc:postgresql://{{ index .Values.global.database.timescaledb.hosts 0}}/harness'
+            - name: TIMESCALEDB_SSL_MODE
+              value: "require"
+            - name: TIMESCALEDB_SSL_ROOT_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.global.database.timescaledb.certName }}
+                  key: {{ .Values.global.database.timescaledb.certKey }}
+            {{- end }}
           envFrom:
           - configMapRef:
               name: ci-manager

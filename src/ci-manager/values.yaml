@@ -42,6 +42,8 @@ global:
       userKey: ""
       passwordKey: ""
       extraArgs: ""
+      certName: ""
+      certKey: ""
 
 replicaCount: 1
 maxSurge: 1
