@@ -1,5 +1,5 @@
 {{- if .Values.autoscaling.enabled }}
-apiVersion: autoscaling/v1
+apiVersion: {{ include "harnesscommon.capabilities.hpa.apiVersion" ( dict "context" $ ) }}
 kind: HorizontalPodAutoscaler
 metadata:
   name: ci-manager
@@ -13,7 +13,5 @@ spec:
     name: ci-manager
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
-  {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
-  targetCPUUtilizationPercentage : {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
-  {{ end }}
+  {{ include "harnesscommon.hpa.metrics.apiVersion" . }}
 {{- end }}
