@@ -147,7 +147,7 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.4.2"
+      tag: "1.4.4"
       repository: plugins/artifactory
       imagePullSecrets: []
   gcs_cache:
