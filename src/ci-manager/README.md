@@ -25,7 +25,7 @@ A Helm chart for Kubernetes
 | ci_images.addon.image.imagePullSecrets | list | `[]` |  |
 | ci_images.addon.image.registry | string | `"docker.io"` |  |
 | ci_images.addon.image.repository | string | `"harness/ci-addon"` |  |
-| ci_images.addon.image.tag | string | `"1.16.6-linux-amd64"` |  |
+| ci_images.addon.image.tag | string | `"1.16.19-linux-amd64"` |  |
 | ci_images.artifactory_upload.image.digest | string | `""` |  |
 | ci_images.artifactory_upload.image.imagePullSecrets | list | `[]` |  |
 | ci_images.artifactory_upload.image.registry | string | `"docker.io"` |  |
@@ -70,7 +70,7 @@ A Helm chart for Kubernetes
 | ci_images.lite_engine.image.imagePullSecrets | list | `[]` |  |
 | ci_images.lite_engine.image.registry | string | `"docker.io"` |  |
 | ci_images.lite_engine.image.repository | string | `"harness/ci-lite-engine"` |  |
-| ci_images.lite_engine.image.tag | string | `"1.16.6-linux-amd64"` |  |
+| ci_images.lite_engine.image.tag | string | `"1.16.19-linux-amd64"` |  |
 | ci_images.s3_cache.image.digest | string | `""` |  |
 | ci_images.s3_cache.image.imagePullSecrets | list | `[]` |  |
 | ci_images.s3_cache.image.registry | string | `"docker.io"` |  |
