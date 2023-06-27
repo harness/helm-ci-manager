@@ -53,6 +53,7 @@ global:
       passwordKey: "redis-password"
       extraArgs: ""
 
+enableAuth: true
 replicaCount: 1
 maxSurge: 1
 maxUnavailable: 0
