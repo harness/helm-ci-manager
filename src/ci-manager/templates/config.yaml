@@ -9,7 +9,7 @@ data:
   CACHE_CONFIG_SENTINEL_MASTER_NAME: "harness-redis"
   CACHE_CONFIG_USE_SENTINEL: "true"
   DEPLOY_MODE: KUBERNETES_ONPREM
-  ENABLE_AUTH: {{.Values.enableAuth | quote}}
+  ENABLE_AUTH: {{ .Values.enableAuth | quote }}
   MANAGER_TARGET: harness-manager:9879
   MANAGER_AUTHORITY: harness-manager:9879
   GRPC_SERVER_PORT: {{.Values.service.grpcport | quote}}
