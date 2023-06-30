@@ -1,6 +1,6 @@
 # ci-manager
 
-![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -25,62 +25,63 @@ A Helm chart for Kubernetes
 | ci_images.addon.image.imagePullSecrets | list | `[]` |  |
 | ci_images.addon.image.registry | string | `"docker.io"` |  |
 | ci_images.addon.image.repository | string | `"harness/ci-addon"` |  |
-| ci_images.addon.image.tag | string | `"1.16.19-linux-amd64"` |  |
+| ci_images.addon.image.tag | string | `"1.16.19"` |  |
 | ci_images.artifactory_upload.image.digest | string | `""` |  |
 | ci_images.artifactory_upload.image.imagePullSecrets | list | `[]` |  |
 | ci_images.artifactory_upload.image.registry | string | `"docker.io"` |  |
 | ci_images.artifactory_upload.image.repository | string | `"plugins/artifactory"` |  |
-| ci_images.artifactory_upload.image.tag | string | `"1.2.0"` |  |
+| ci_images.artifactory_upload.image.tag | string | `"1.4.4"` |  |
 | ci_images.gcs_cache.image.digest | string | `""` |  |
 | ci_images.gcs_cache.image.imagePullSecrets | list | `[]` |  |
 | ci_images.gcs_cache.image.registry | string | `"docker.io"` |  |
 | ci_images.gcs_cache.image.repository | string | `"plugins/cache"` |  |
-| ci_images.gcs_cache.image.tag | string | `"1.4.7"` |  |
+| ci_images.gcs_cache.image.tag | string | `"1.5.9"` |  |
 | ci_images.gcs_upload.image.digest | string | `""` |  |
 | ci_images.gcs_upload.image.imagePullSecrets | list | `[]` |  |
 | ci_images.gcs_upload.image.registry | string | `"docker.io"` |  |
 | ci_images.gcs_upload.image.repository | string | `"plugins/gcs"` |  |
-| ci_images.gcs_upload.image.tag | string | `"1.3.0"` |  |
+| ci_images.gcs_upload.image.tag | string | `"1.4.0"` |  |
 | ci_images.git_clone.image.digest | string | `""` |  |
 | ci_images.git_clone.image.imagePullSecrets | list | `[]` |  |
 | ci_images.git_clone.image.registry | string | `"docker.io"` |  |
 | ci_images.git_clone.image.repository | string | `"harness/drone-git"` |  |
-| ci_images.git_clone.image.tag | string | `"1.2.8-rootless"` |  |
+| ci_images.git_clone.image.tag | string | `"1.3.4-rootless"` |  |
 | ci_images.kaniko.image.digest | string | `""` |  |
 | ci_images.kaniko.image.imagePullSecrets | list | `[]` |  |
 | ci_images.kaniko.image.registry | string | `"docker.io"` |  |
 | ci_images.kaniko.image.repository | string | `"plugins/kaniko"` |  |
-| ci_images.kaniko.image.tag | string | `"1.7.1"` |  |
+| ci_images.kaniko.image.tag | string | `"1.7.5"` |  |
 | ci_images.kaniko_acr.image.digest | string | `""` |  |
 | ci_images.kaniko_acr.image.imagePullSecrets | list | `[]` |  |
 | ci_images.kaniko_acr.image.registry | string | `"docker.io"` |  |
 | ci_images.kaniko_acr.image.repository | string | `"plugins/kaniko-acr"` |  |
-| ci_images.kaniko_acr.image.tag | string | `"1.7.1"` |  |
+| ci_images.kaniko_acr.image.tag | string | `"1.7.5"` |  |
 | ci_images.kaniko_ecr.image.digest | string | `""` |  |
 | ci_images.kaniko_ecr.image.imagePullSecrets | list | `[]` |  |
 | ci_images.kaniko_ecr.image.registry | string | `"docker.io"` |  |
 | ci_images.kaniko_ecr.image.repository | string | `"plugins/kaniko-ecr"` |  |
-| ci_images.kaniko_ecr.image.tag | string | `"1.7.1"` |  |
+| ci_images.kaniko_ecr.image.tag | string | `"1.7.5"` |  |
 | ci_images.kaniko_gcr.image.digest | string | `""` |  |
 | ci_images.kaniko_gcr.image.imagePullSecrets | list | `[]` |  |
 | ci_images.kaniko_gcr.image.registry | string | `"docker.io"` |  |
 | ci_images.kaniko_gcr.image.repository | string | `"plugins/kaniko-gcr"` |  |
-| ci_images.kaniko_gcr.image.tag | string | `"1.7.1"` |  |
+| ci_images.kaniko_gcr.image.tag | string | `"1.7.5"` |  |
 | ci_images.lite_engine.image.digest | string | `""` |  |
 | ci_images.lite_engine.image.imagePullSecrets | list | `[]` |  |
 | ci_images.lite_engine.image.registry | string | `"docker.io"` |  |
 | ci_images.lite_engine.image.repository | string | `"harness/ci-lite-engine"` |  |
-| ci_images.lite_engine.image.tag | string | `"1.16.19-linux-amd64"` |  |
+| ci_images.lite_engine.image.tag | string | `"1.16.19"` |  |
 | ci_images.s3_cache.image.digest | string | `""` |  |
 | ci_images.s3_cache.image.imagePullSecrets | list | `[]` |  |
 | ci_images.s3_cache.image.registry | string | `"docker.io"` |  |
 | ci_images.s3_cache.image.repository | string | `"plugins/cache"` |  |
-| ci_images.s3_cache.image.tag | string | `"1.4.7"` |  |
+| ci_images.s3_cache.image.tag | string | `"1.5.9"` |  |
 | ci_images.s3_upload.image.digest | string | `""` |  |
 | ci_images.s3_upload.image.imagePullSecrets | list | `[]` |  |
 | ci_images.s3_upload.image.registry | string | `"docker.io"` |  |
 | ci_images.s3_upload.image.repository | string | `"plugins/s3"` |  |
-| ci_images.s3_upload.image.tag | string | `"1.2.0"` |  |
+| ci_images.s3_upload.image.tag | string | `"1.2.3"` |  |
+| enableAuth | bool | `true` |  |
 | fullnameOverride | string | `""` |  |
 | global.airgap | bool | `false` |  |
 | global.database.mongo.extraArgs | string | `""` |  |
@@ -97,6 +98,13 @@ A Helm chart for Kubernetes
 | global.database.postgres.protocol | string | `"postgres"` |  |
 | global.database.postgres.secretName | string | `""` |  |
 | global.database.postgres.userKey | string | `""` |  |
+| global.database.redis.extraArgs | string | `""` |  |
+| global.database.redis.hosts | list | `["redis:6379"]` | provide default values if redis.installed is set to false |
+| global.database.redis.installed | bool | `true` |  |
+| global.database.redis.passwordKey | string | `"redis-password"` |  |
+| global.database.redis.protocol | string | `"redis"` |  |
+| global.database.redis.secretName | string | `"redis-secret"` |  |
+| global.database.redis.userKey | string | `"redis-user"` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
@@ -112,7 +120,7 @@ A Helm chart for Kubernetes
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"docker.io"` |  |
 | image.repository | string | `"harness/ci-manager-signed"` |  |
-| image.tag | string | `"1"` |  |
+| image.tag | string | `"3907"` |  |
 | java.memory | int | `4096` |  |
 | maxSurge | int | `1` |  |
 | maxUnavailable | int | `0` |  |
@@ -135,7 +143,7 @@ A Helm chart for Kubernetes
 | securityImage.image.imagePullSecrets | list | `[]` |  |
 | securityImage.image.registry | string | `"docker.io"` |  |
 | securityImage.image.repository | string | `"harness/sto-plugin"` |  |
-| securityImage.image.tag | string | `"latest"` |  |
+| securityImage.image.tag | string | `"1.13.0"` |  |
 | service.grpcport | int | `9979` |  |
 | service.port | int | `7090` |  |
 | service.type | string | `"ClusterIP"` |  |
