@@ -5,9 +5,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   CACHE_BACKEND: "REDIS"
-  CACHE_CONFIG_REDIS_SENTINELS: 'redis://redis-sentinel-harness-announce-0.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-1.{{ .Release.Namespace  }}:26379,redis://redis-sentinel-harness-announce-2.{{ .Release.Namespace  }}:26379'
+  CACHE_CONFIG_REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   CACHE_CONFIG_SENTINEL_MASTER_NAME: "harness-redis"
-  CACHE_CONFIG_USE_SENTINEL: "true"
+  CACHE_CONFIG_USE_SENTINEL: {{ .Values.global.database.redis.installed | quote }}
   DEPLOY_MODE: KUBERNETES_ONPREM
   ENABLE_AUTH: {{ .Values.enableAuth | quote }}
   MANAGER_TARGET: harness-manager:9879
@@ -20,7 +20,7 @@ data:
   DOCKER_PUSH_IMAGE: '{{ .Values.ci_images.kaniko.image.repository }}:{{ .Values.ci_images.kaniko.image.tag }}'
   ECR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_ecr.image.repository }}:{{ .Values.ci_images.kaniko_ecr.image.tag }}'
   GCR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_gcr.image.repository }}:{{ .Values.ci_images.kaniko_gcr.image.tag }}'
-  ACR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_acr.image.repository }}:{{ .Values.ci_images.kaniko_acr.image.tag }}'  
+  ACR_PUSH_IMAGE: '{{ .Values.ci_images.kaniko_acr.image.repository }}:{{ .Values.ci_images.kaniko_acr.image.tag }}'
   GCS_UPLOAD_IMAGE: '{{ .Values.ci_images.gcs_upload.image.repository }}:{{ .Values.ci_images.gcs_upload.image.tag }}'
   S3_UPLOAD_IMAGE: '{{ .Values.ci_images.s3_upload.image.repository }}:{{ .Values.ci_images.s3_upload.image.tag }}'
   ARTIFACTORY_UPLOAD_IMAGE: '{{ .Values.ci_images.artifactory_upload.image.repository }}:{{ .Values.ci_images.artifactory_upload.image.tag }}'
