@@ -60,18 +60,13 @@ spec:
           env:
             {{- include "harnesscommon.dbconnection.redisEnv" (dict "context" .Values.global.database.redis "userVariableName" "EVENTS_FRAMEWORK_REDIS_USERNAME" "passwordVariableName" "EVENTS_FRAMEWORK_REDIS_PASSWORD") | indent 12 }}
             {{- include "harnesscommon.dbconnection.mongoEnv" . | indent 12 }}
+            {{- include "harnesscommon.dbconnection.timescaleEnv" (dict "passwordVariableName" "TIMESCALE_PASSWORD" "userVariableName" "TIMESCALEDB_USERNAME" "context" $) | indent 12}}
+            {{- include "harnesscommon.dbconnection.timescaleSslEnv" (dict "sslModeValue" "require" "certVariableName" "TIMESCALEDB_SSL_ROOT_CERT" "context" $ ) | nindent 12 }}
             - name: STO_SERVICE_GLOBAL_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.stoServiceGlobalToken.name }}
                   key: {{ .Values.stoServiceGlobalToken.key }}
-            - name : TIMESCALE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.timescaleSecret.password.name }}
-                  key: {{ .Values.timescaleSecret.password.key }}
-            - name: TIMESCALEDB_USERNAME
-              value: postgres
             - name: MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "harness" "context" $) }}
             - name: CIMANAGER_MONGO_URI
@@ -79,7 +74,7 @@ spec:
             - name: PMS_MONGO_URI
               value: {{ include "harnesscommon.dbconnection.mongoConnection" (dict "database" "pms-harness" "context" $) }}
             - name: TIMESCALE_URI
-              value: 'jdbc:postgresql://timescaledb-single-chart.{{ .Release.Namespace }}:5432/harness'
+              value: {{ include "harnesscommon.dbconnection.timescaleConnection" (dict "protocol" "jdbc:postgresql" "database" "harness" "context" $) }}
           envFrom:
           - configMapRef:
               name: ci-manager

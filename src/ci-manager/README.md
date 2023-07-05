@@ -105,6 +105,8 @@ A Helm chart for Kubernetes
 | global.database.redis.protocol | string | `"redis"` |  |
 | global.database.redis.secretName | string | `"redis-secret"` |  |
 | global.database.redis.userKey | string | `"redis-user"` |  |
+| global.database.timescaledb.certKey | string | `""` |  |
+| global.database.timescaledb.certName | string | `""` |  |
 | global.database.timescaledb.extraArgs | string | `""` |  |
 | global.database.timescaledb.hosts | list | `["timescaledb-single-chart:5432"]` | provide default values if mongo.installed is set to false |
 | global.database.timescaledb.installed | bool | `true` |  |
