@@ -8,6 +8,7 @@ data:
   CACHE_CONFIG_REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   CACHE_CONFIG_SENTINEL_MASTER_NAME: "harness-redis"
   CACHE_CONFIG_USE_SENTINEL: {{ .Values.global.database.redis.installed | quote }}
+  CACHE_CONFIG_REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   DEPLOY_MODE: KUBERNETES_ONPREM
   ENABLE_AUTH: {{ .Values.enableAuth | quote }}
   MANAGER_TARGET: harness-manager:9879
