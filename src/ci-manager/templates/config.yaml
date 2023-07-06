@@ -35,6 +35,10 @@ data:
   EVENTS_FRAMEWORK_USE_SENTINEL: {{ .Values.global.database.redis.installed | quote }}
   EVENTS_FRAMEWORK_SENTINEL_MASTER_NAME: 'harness-redis'
   EVENTS_FRAMEWORK_REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
+  LOCK_CONFIG_USE_SENTINEL: {{ .Values.global.database.redis.installed | quote }}
+  LOCK_CONFIG_SENTINEL_MASTER_NAME: 'harness-redis'
+  LOCK_CONFIG_REDIS_SENTINELS: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
+  LOCK_CONFIG_REDIS_URL: {{ include "harnesscommon.dbconnection.redisConnection" (dict "context" .Values.global.database.redis) }}
   SHOULD_CONFIGURE_WITH_PMS: "true"
   ENABLE_DASHBOARD_TIMESCALE: "true"
   MEMORY: {{ .Values.java.memory | quote }}
