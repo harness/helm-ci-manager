@@ -87,14 +87,14 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.19"
+      tag: "1.16.20"
       repository: harness/ci-addon
       imagePullSecrets: []
   lite_engine:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.19"
+      tag: "1.16.20"
       repository: harness/ci-lite-engine
       imagePullSecrets: []
   git_clone:
