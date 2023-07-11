@@ -1,6 +1,6 @@
 # ci-manager
 
-![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
+![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.1](https://img.shields.io/badge/AppVersion-0.0.1-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -25,7 +25,7 @@ A Helm chart for Kubernetes
 | ci_images.addon.image.imagePullSecrets | list | `[]` |  |
 | ci_images.addon.image.registry | string | `"docker.io"` |  |
 | ci_images.addon.image.repository | string | `"harness/ci-addon"` |  |
-| ci_images.addon.image.tag | string | `"1.16.19"` |  |
+| ci_images.addon.image.tag | string | `"1.16.20"` |  |
 | ci_images.artifactory_upload.image.digest | string | `""` |  |
 | ci_images.artifactory_upload.image.imagePullSecrets | list | `[]` |  |
 | ci_images.artifactory_upload.image.registry | string | `"docker.io"` |  |
@@ -70,7 +70,7 @@ A Helm chart for Kubernetes
 | ci_images.lite_engine.image.imagePullSecrets | list | `[]` |  |
 | ci_images.lite_engine.image.registry | string | `"docker.io"` |  |
 | ci_images.lite_engine.image.repository | string | `"harness/ci-lite-engine"` |  |
-| ci_images.lite_engine.image.tag | string | `"1.16.19"` |  |
+| ci_images.lite_engine.image.tag | string | `"1.16.20"` |  |
 | ci_images.s3_cache.image.digest | string | `""` |  |
 | ci_images.s3_cache.image.imagePullSecrets | list | `[]` |  |
 | ci_images.s3_cache.image.registry | string | `"docker.io"` |  |
