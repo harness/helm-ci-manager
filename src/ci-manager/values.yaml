@@ -54,7 +54,6 @@ global:
       userKey: "redis-user"
       passwordKey: "redis-password"
       extraArgs: ""
-
 enableAuth: true
 replicaCount: 1
 maxSurge: 1
@@ -64,7 +63,7 @@ image:
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "3907"
+  tag: "1.5.9"
   digest: ""
   imagePullSecrets: []
 securityImage:
