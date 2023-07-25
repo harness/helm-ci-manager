@@ -136,35 +136,35 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.4.0"
+      tag: "1.4.1"
       repository: plugins/gcs
       imagePullSecrets: []
   s3_upload:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.2.3"
+      tag: "1.2.4"
       repository: plugins/s3
       imagePullSecrets: []
   artifactory_upload:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.4.4"
+      tag: "1.4.5"
       repository: plugins/artifactory
       imagePullSecrets: []
   gcs_cache:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.5.9"
+      tag: "1.5.12"
       repository: plugins/cache
       imagePullSecrets: []
   s3_cache:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.5.9"
+      tag: "1.5.12"
       repository: plugins/cache
       imagePullSecrets: []
 stoServiceGlobalToken:
