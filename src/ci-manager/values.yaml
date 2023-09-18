@@ -63,7 +63,7 @@ image:
   repository: harness/ci-manager-signed
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "4903"
+  tag: "4905"
   digest: ""
   imagePullSecrets: []
 securityImage:
@@ -86,14 +86,14 @@ ci_images:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.20"
+      tag: "1.16.24"
       repository: harness/ci-addon
       imagePullSecrets: []
   lite_engine:
     image:
       registry: docker.io
       digest: ""
-      tag: "1.16.20"
+      tag: "1.16.24"
       repository: harness/ci-lite-engine
       imagePullSecrets: []
   git_clone:
